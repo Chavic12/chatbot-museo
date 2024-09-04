@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contacto - Flowbite Flask</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='dist/css/output.css') }}"
+        />
+    </head>
+    <body class="bg-gray-100">
+        {% include 'navbar.html' %}
+
+        <main class="max-w-7xl mx-auto p-6">
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <div
+                class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4"
+            >
+                {{ messages[0] }}
+            </div>
+            {% endif %} {% endwith %}
+
+            <section class="bg-white shadow-lg rounded-lg p-6 mb-6">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">Contacto</h1>
+                <p class="text-gray-700 mb-4">
+                    ¡Nos encantaría escuchar de ti! Si tienes alguna pregunta o
+                    comentario, no dudes en ponerte en contacto con nosotros
+                    usando el siguiente formulario:
+                </p>
+
+                <form action="/send_message" method="POST" class="space-y-4">
+                    <div>
+                        <label
+                            for="name"
+                            class="block text-gray-700 font-medium mb-2"
+                            >Nombre</label
+                        >
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            class="w-full p-2 border border-gray-300 rounded-md"
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for="email"
+                            class="block text-gray-700 font-medium mb-2"
+                            >Correo Electrónico</label
+                        >
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            class="w-full p-2 border border-gray-300 rounded-md"
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for="message"
+                            class="block text-gray-700 font-medium mb-2"
+                            >Mensaje</label
+                        >
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            required
+                            class="w-full p-2 border border-gray-300 rounded-md"
+                        ></textarea>
+                    </div>
+                    <button
+                        type="submit"
+                        class="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-800"
+                    >
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

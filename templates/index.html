@@ -1,13 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flowbite Flask</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
-</head>
-<body>
-    <h1 class="text-blue-600">Hello, Flask!</h1>
-</body>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dist/css/output.css')}}"
+    />
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 h-screen w-screen flex flex-col overflow-hidden">
+    {% include "navbar.html" %}
+    <!-- Main Content -->
+    <section class="flex-1 flex flex-col p-4 overflow-hidden">
+        <!-- Prompt Images -->
+        <div class="mb-4">
+            <!-- Contenedor para obras en móvil con scroll horizontal -->
+            <div class="w-full overflow-x-auto no-scrollbar sm:hidden">
+                <div class="flex">
+                    <!-- Obra 1 -->
+                    <div class="w-1/2 p-2 flex flex-col items-center">
+                        <iframe
+                            src="https://drive.google.com/file/d/1tK7lqQTDWE2Uv8ZQYfpFira-LuqcDAgJ/preview"
+                            allow="autoplay"
+                            class="w-full h-40 rounded-lg shadow-lg"
+                        ></iframe>
+                        <h3 class="mt-2 text-lg text-white">
+                            La bocina
+                        </h3>
+                        <button
+                            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                            onclick="askChatbot('La bocina')"
+                        >
+                            Más información
+                        </button>
+                    </div>
+
+                    <!-- Obra 2 -->
+                    <div class="w-1/2 p-2 flex flex-col items-center">
+                        <iframe
+                            src="https://drive.google.com/file/d/1i75KiZNSm-YTwNzRt0bqb1oB431gD4Ce/preview"
+                            allow="autoplay"
+                            class="w-full h-40 rounded-lg shadow-lg"
+                        ></iframe>
+                        <h3 class="mt-2 text-lg font-semibold">
+                            La chicha del Yamor
+                        </h3>
+                        <button
+                            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                            onclick="askChatbot('La chicha del Yamor')"
+                        >
+                            Más información
+                        </button>
+                    </div>
+
+                    <!-- Obra 3 (se mostrará al hacer scroll) -->
+                    <div class="w-1/2 p-2 flex flex-col items-center">
+                        <iframe
+                            src="https://drive.google.com/file/d/1sWdIDRlOSOnja_9K53UmoMlIFoCuiRAT/preview"
+                            allow="autoplay"
+                            class="w-full h-40 rounded-lg shadow-lg"
+                        ></iframe>
+                        <h3 class="mt-2 text-lg font-semibold">
+                            Prendimiento de Jesús
+                        </h3>
+                        <button
+                            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                            onclick="askChatbot('Prendimiento de Jesús')"
+                        >
+                            Más información
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenedor para obras en pantallas más grandes -->
+            <div class="hidden sm:flex flex-wrap justify-between">
+                <!-- Obra 1 -->
+                <div class="w-full sm:w-1/3 p-2 flex flex-col items-center">
+                    <iframe
+                        src="https://drive.google.com/file/d/1tK7lqQTDWE2Uv8ZQYfpFira-LuqcDAgJ/preview"
+                        allow="autoplay"
+                        class="w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-lg shadow-lg"
+                    ></iframe>
+                    <h3 class="mt-2 text-lg font-semibold">La bocina</h3>
+                    <button
+                        class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                        onclick="askChatbot('La bocina')"
+                    >
+                        Más información
+                    </button>
+                </div>
+
+                <!-- Obra 2 -->
+                <div class="w-full sm:w-1/3 p-2 flex flex-col items-center">
+                    <iframe
+                        src="https://drive.google.com/file/d/1i75KiZNSm-YTwNzRt0bqb1oB431gD4Ce/preview"
+                        allow="autoplay"
+                        class="w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-lg shadow-lg"
+                    ></iframe>
+                    <h3 class="mt-2 text-lg font-semibold">
+                        La chicha del Yamor
+                    </h3>
+                    <button
+                        class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                        onclick="askChatbot('La chicha del Yamor')"
+                    >
+                        Más información
+                    </button>
+                </div>
+
+                <!-- Obra 3 -->
+                <div class="w-full sm:w-1/3 p-2 flex flex-col items-center">
+                    <iframe
+                        src="https://drive.google.com/file/d/1sWdIDRlOSOnja_9K53UmoMlIFoCuiRAT/preview"
+                        allow="autoplay"
+                        class="w-full h-40 sm:h-48 md:h-56 lg:h-64 rounded-lg shadow-lg"
+                    ></iframe>
+                    <h3 class="mt-2 text-lg font-semibold">
+                        Prendimiento de Jesús
+                    </h3>
+                    <button
+                        class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                        onclick="askChatbot('Prendimiento de Jesús')"
+                    >
+                        Más información
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Box -->
+        <div
+            id="chat-box"
+            class="flex-grow mb-4 overflow-y-auto p-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm"
+            style="max-height: calc(100vh - 160px)"
+        >
+            <!-- Aquí se agregarán los mensajes -->
+        </div>
+
+        <!-- Chat Form -->
+        <form
+            id="chat-form"
+            class="flex bg-gray-200 dark:bg-gray-600 rounded-lg p-2 border border-gray-300 dark:border-gray-500"
+        >
+            <input
+                id="chat-input"
+                type="text"
+                class="flex-1 px-4 py-2 border border-gray-300 dark:bg-gray-600 dark:text-white dark:border-gray-500 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Escribe tu mensaje..."
+            />
+            <button
+                type="submit"
+                class="ml-2 px-4 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 transition"
+            >
+                Enviar
+            </button>
+        </form>
+    </section>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.5.3/flowbite.min.js"
+      integrity="sha512-1z6uD2C4hjv5u1+eAc1L7LkfQml5/jl60JfplX2Jdyd5d3F1C4ZrXfKrhHe5KQgWfrR/Bb/gcSLlMgnfAwdNg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/6II6YxNIQ4MlXK6F10zEfE7n1K/MZ7tOd2t2tr"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+        document
+        .getElementById("chat-form")
+        .addEventListener("submit", function (event) {
+            event.preventDefault();
+            const chatInput = document.getElementById("chat-input");
+            const userMessage = chatInput.value.trim();
+
+            if (userMessage) {
+                const chatBox = document.getElementById("chat-box");
+                chatBox.innerHTML += `<div class="mb-2 text-right"><span class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg">${userMessage}</span></div>`;
+
+
+                fetch("/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams({
+                        message: userMessage,
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        chatBox.innerHTML += `<div class="mb-2 text-left"><span class="inline-block px-4 py-2 bg-white dark:bg-white rounded-lg">${data.response}</span></div>`;
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    });
+
+                chatInput.value = "";
+                chatBox.scrollTop = chatBox.scrollHeight; // Desplazarse al final
+            }
+        });
+
+        function askChatbot(description) {
+            const chatBox = document.getElementById("chat-box");
+            const mensaje = `¿Qué puedes contarme sobre ${description}?`
+            chatBox.innerHTML += `<div class="mb-2 text-right"><span class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg">${mensaje}</span></div>`;
+            fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type":
+                        "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                    message: mensaje,
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    chatBox.innerHTML += `<div class="mb-2 text-left"><span class="inline-block px-4 py-2 bg-white dark:bg-white rounded-lg">${data.response}</span></div>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                });
+
+            chatBox.scrollTop = chatBox.scrollHeight; // Desplazarse al final
+        }
+
+    </script>
+  </body>
 </html>
